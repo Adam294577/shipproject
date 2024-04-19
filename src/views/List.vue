@@ -87,6 +87,8 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 
 /* add icons to the library */
 library.add(fab, fas, far);
+
+console.log("test");
 </script>
 
 <style>
