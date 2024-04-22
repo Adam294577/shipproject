@@ -326,7 +326,7 @@
             </a>
           </div> -->
           <div class="logout col">
-            <a href="#" class="text-light text-decoration-none">
+            <a href="#" class="text-light text-decoration-none" @click.prevent="logout">
               <font-awesome-icon
                 :icon="['fas', 'arrow-right-from-bracket']"
                 size="2xl"
@@ -362,6 +362,10 @@ const router = useRouter();
 function gotoDetail() {
   console.log("gotoDetail");
   router.push("/detail");
+}
+
+function logout() {
+  router.push("/");
 }
 </script>
 
