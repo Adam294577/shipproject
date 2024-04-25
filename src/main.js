@@ -1,12 +1,17 @@
-// import './assets/main.css'
-
-import 'bootstrap/dist/css/bootstrap.min.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+
+// import { createRouter, createWebHistory } from 'vue-router'
+// import { setupLayouts } from 'virtual:generated-layouts'
+// import generatedRoutes from 'virtual:generated-pages'
+
+// import './assets/main.css'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'virtual:svg-icons-register'
 
 const app = createApp(App)
 

@@ -11,7 +11,9 @@
                 class="img-fluid rounded-circle"
               />
             </div>
-            <p class="text-light bg-orange fs-4 text-center position-absolute online-status">
+            <p
+              class="text-light bg-orange fs-4 text-center position-absolute online-status"
+            >
               在線中
             </p>
           </div>
@@ -39,7 +41,9 @@
   <div class="container-fluid bg-lightblue list-content">
     <div class="row justify-content-center">
       <div class="col-8 my-3">
-        <h2 class="color-darkblue fs-5">救護紀錄表清單 <span class="text-gray">(36)</span></h2>
+        <h2 class="color-darkblue fs-5">
+          救護紀錄表清單 <span class="text-gray">(36)</span>
+        </h2>
         <ul class="list-unstyled">
           <li class="my-3" @click="gotoDetail">
             <div class="card mb-3">
@@ -74,7 +78,9 @@
                       <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
                     </div>
                     <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">轉診申請時間: <span>2023-12-17 08:00</span></p>
+                      <p class="text-gray mb-0 lh-1">
+                        轉診申請時間: <span>2023-12-17 08:00</span>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -114,7 +120,9 @@
                       <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
                     </div>
                     <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">轉診申請時間: <span>2023-12-17 08:00</span></p>
+                      <p class="text-gray mb-0 lh-1">
+                        轉診申請時間: <span>2023-12-17 08:00</span>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -154,7 +162,9 @@
                       <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
                     </div>
                     <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">轉診申請時間: <span>2023-12-17 08:00</span></p>
+                      <p class="text-gray mb-0 lh-1">
+                        轉診申請時間: <span>2023-12-17 08:00</span>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -194,7 +204,9 @@
                       <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
                     </div>
                     <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">轉診申請時間: <span>2023-12-17 08:00</span></p>
+                      <p class="text-gray mb-0 lh-1">
+                        轉診申請時間: <span>2023-12-17 08:00</span>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -234,7 +246,9 @@
                       <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
                     </div>
                     <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">轉診申請時間: <span>2023-12-17 08:00</span></p>
+                      <p class="text-gray mb-0 lh-1">
+                        轉診申請時間: <span>2023-12-17 08:00</span>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -274,7 +288,9 @@
                       <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
                     </div>
                     <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">轉診申請時間: <span>2023-12-17 08:00</span></p>
+                      <p class="text-gray mb-0 lh-1">
+                        轉診申請時間: <span>2023-12-17 08:00</span>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -327,29 +343,29 @@
 
 <script setup>
 /* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* import specific icons */
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
 
 /* add icons to the library */
-library.add(fab, fas, far)
+library.add(fab, fas, far);
 
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 function gotoDetail() {
-  console.log('gotoDetail')
-  router.push('/detail')
+  console.log("gotoDetail");
+  router.push("/detail");
 }
 
 function logout() {
-  router.push('/')
+  router.push("/");
 }
 </script>
 
@@ -400,7 +416,7 @@ function logout() {
   border-width: 0;
 }
 span:nth-child(1) span:after {
-  content: '';
+  content: "";
   width: 1px;
   height: 12px;
   background-color: #000;
@@ -409,7 +425,7 @@ span:nth-child(1) span:after {
   top: 4px;
 }
 span:nth-child(2) span:after {
-  content: '';
+  content: "";
   width: 1px;
   height: 12px;
   background-color: #000;
@@ -418,7 +434,7 @@ span:nth-child(2) span:after {
   top: 4px;
 }
 span:nth-child(3) span:after {
-  content: '';
+  content: "";
   width: 1px;
   height: 12px;
   background-color: #000;

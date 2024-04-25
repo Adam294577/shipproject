@@ -3,7 +3,11 @@
     <div class="row align-items-end justify-content-between h-100 pb-3 px-5">
       <div class="col-3">
         <p class="text-white" @click.prevent="gotoPrev">
-          <font-awesome-icon :icon="['fas', 'angle-left']" size="xl" style="color: #ffffff" />
+          <font-awesome-icon
+            :icon="['fas', 'angle-left']"
+            size="xl"
+            style="color: #ffffff"
+          />
           新增紀錄
         </p>
       </div>
@@ -17,7 +21,9 @@
         <div class="row px-5 gx-0">
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">呼吸頻率</span>
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                >呼吸頻率</span
+              >
             </div>
           </div>
           <div class="col-8 w-684">
@@ -34,7 +40,9 @@
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">脈搏</span>
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                >脈搏</span
+              >
             </div>
           </div>
           <div class="col-8 w-684">
@@ -51,7 +59,9 @@
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">體溫</span>
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                >體溫</span
+              >
             </div>
           </div>
           <div class="col-8 w-684">
@@ -68,7 +78,9 @@
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">血氧濃度</span>
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                >血氧濃度</span
+              >
             </div>
           </div>
           <div class="col-8 w-684">
@@ -85,7 +97,9 @@
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">血壓</span>
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                >血壓</span
+              >
             </div>
           </div>
           <div class="col-4 w-35">
@@ -116,13 +130,22 @@
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">意識狀況</span>
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                >意識狀況</span
+              >
             </div>
           </div>
           <div class="col-8">
             <div class="pipeline">
-              <input type="checkbox" class="btn-check" id="keep-warm" autocomplete="off" />
-              <label class="btn btn-outline-primary w-24 ms-1" for="keep-warm">清醒</label>
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="keep-warm"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary w-24 ms-1" for="keep-warm"
+                >清醒</label
+              >
               <input
                 type="checkbox"
                 class="btn-check"
@@ -132,10 +155,24 @@
               <label class="btn btn-outline-primary ms-1" for="psychological-support"
                 >對聲音有反應</label
               >
-              <input type="checkbox" class="btn-check" id="als-support" autocomplete="off" />
-              <label class="btn btn-outline-primary ms-1" for="als-support">對痛有反應</label>
-              <input type="checkbox" class="btn-check" id="life-monitor" autocomplete="off" />
-              <label class="btn btn-outline-primary w-24 ms-1" for="life-monitor">沒反應</label>
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="als-support"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary ms-1" for="als-support"
+                >對痛有反應</label
+              >
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="life-monitor"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary w-24 ms-1" for="life-monitor"
+                >沒反應</label
+              >
             </div>
           </div>
           <div class="col-4 w-315">
@@ -190,7 +227,9 @@
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">紀錄時間</span>
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                >紀錄時間</span
+              >
             </div>
           </div>
           <div class="col-8 w-684">
@@ -215,25 +254,25 @@
 </template>
 <script setup>
 /* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* import specific icons */
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
 
 /* add icons to the library */
-library.add(fab, fas, far)
+library.add(fab, fas, far);
 
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 function gotoPrev() {
-  console.log('gotoPrev')
-  router.push('/detail')
+  console.log("gotoPrev");
+  router.push("/detail");
 }
 </script>
 <style scoped>

@@ -3,7 +3,11 @@
     <div class="row align-items-end justify-content-between h-100 pb-3 px-5">
       <div class="col-3">
         <p class="text-white" @click.prevent="gotoPrev">
-          <font-awesome-icon :icon="['fas', 'angle-left']" size="xl" style="color: #ffffff" />
+          <font-awesome-icon
+            :icon="['fas', 'angle-left']"
+            size="xl"
+            style="color: #ffffff"
+          />
           轉入醫院簽章
         </p>
       </div>
@@ -42,7 +46,9 @@
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">聯絡電話</span>
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                >聯絡電話</span
+              >
             </div>
           </div>
           <div class="col-8 w-684">
@@ -85,25 +91,25 @@
 </template>
 <script setup>
 /* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* import specific icons */
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
 
 /* add icons to the library */
-library.add(fab, fas, far)
+library.add(fab, fas, far);
 
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 function gotoPrev() {
-  console.log('gotoPrev')
-  router.push('/detail')
+  console.log("gotoPrev");
+  router.push("/detail");
 }
 </script>
 <style scoped>

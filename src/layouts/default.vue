@@ -12,6 +12,14 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 
 /* add icons to the library */
 library.add(fab, fas, far)
+
+// import { useRouter } from 'vue-router'
+// const router = useRouter()
+
+// function loginHandle(event) {
+//   console.log('login')
+//   router.push('/list')
+// }
 </script>
 
 <template>

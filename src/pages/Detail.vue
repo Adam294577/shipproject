@@ -3,13 +3,21 @@
     <div class="row align-items-end justify-content-between h-100 pb-3 px-5">
       <div class="col-3">
         <p class="text-white" @click="gotoPrev">
-          <font-awesome-icon :icon="['fas', 'angle-left']" size="xl" style="color: #ffffff" />
+          <font-awesome-icon
+            :icon="['fas', 'angle-left']"
+            size="xl"
+            style="color: #ffffff"
+          />
           救護紀錄表
         </p>
       </div>
       <div class="col-1">
         <p class="text-white text-end" @click="gotoSign">
-          <font-awesome-icon :icon="['fas', 'pen-clip']" size="xl" style="color: #ffffff" />
+          <font-awesome-icon
+            :icon="['fas', 'pen-clip']"
+            size="xl"
+            style="color: #ffffff"
+          />
         </p>
       </div>
     </div>
@@ -35,7 +43,9 @@
           </div>
           <div class="col-4">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">病患姓名</span>
+              <span class="input-group-text bg-lightblue" id="basic-addon1"
+                >病患姓名</span
+              >
               <input
                 type="text"
                 class="form-control"
@@ -49,7 +59,9 @@
           </div>
           <div class="col-4">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">身分證字號</span>
+              <span class="input-group-text bg-lightblue" id="basic-addon1"
+                >身分證字號</span
+              >
               <input
                 type="text"
                 class="form-control"
@@ -77,7 +89,9 @@
           </div>
           <div class="col-4">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">出生日期</span>
+              <span class="input-group-text bg-lightblue" id="basic-addon1"
+                >出生日期</span
+              >
               <input
                 type="text"
                 class="form-control"
@@ -198,12 +212,31 @@
           </div>
           <div class="col-8 d-flex ms-1 flex-column">
             <div class="pipeline">
-              <input type="checkbox" class="btn-check" id="nasogastric-tube" autocomplete="off" />
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="nasogastric-tube"
+                autocomplete="off"
+              />
               <label class="btn btn-outline-primary" for="nasogastric-tube">鼻胃管</label>
-              <input type="checkbox" class="btn-check" id="Urinary-catheter" autocomplete="off" />
-              <label class="btn btn-outline-primary ms-3" for="Urinary-catheter">導尿管</label>
-              <input type="checkbox" class="btn-check" id="Endotracheal-tube" autocomplete="off" />
-              <label class="btn btn-outline-primary ms-3" for="Endotracheal-tube">氣管內管</label>
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="Urinary-catheter"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary ms-3" for="Urinary-catheter"
+                >導尿管</label
+              >
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="Endotracheal-tube"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary ms-3" for="Endotracheal-tube"
+                >氣管內管</label
+              >
               <input
                 type="checkbox"
                 class="btn-check"
@@ -288,7 +321,12 @@
               </div>
             </div>
             <div>
-              <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" />
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="btn-check-outlined"
+                autocomplete="off"
+              />
               <label class="btn btn-outline-primary w-100" for="btn-check-outlined"
                 >不建議電擊</label
               >
@@ -311,12 +349,19 @@
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">其他處置</span>
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                >其他處置</span
+              >
             </div>
           </div>
           <div class="col-8 ms-1 position-relative">
             <div class="pipeline">
-              <input type="checkbox" class="btn-check" id="keep-warm" autocomplete="off" />
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="keep-warm"
+                autocomplete="off"
+              />
               <label class="btn btn-outline-primary" for="keep-warm">保暖</label>
               <input
                 type="checkbox"
@@ -327,9 +372,21 @@
               <label class="btn btn-outline-primary ms-3" for="psychological-support"
                 >心理支持</label
               >
-              <input type="checkbox" class="btn-check" id="als-support" autocomplete="off" />
-              <label class="btn btn-outline-primary ms-3" for="als-support">ALS 支持</label>
-              <input type="checkbox" class="btn-check" id="life-monitor" autocomplete="off" />
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="als-support"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary ms-3" for="als-support"
+                >ALS 支持</label
+              >
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="life-monitor"
+                autocomplete="off"
+              />
               <label class="btn btn-outline-primary ms-3" for="life-monitor"
                 >僅做生命徵象監測</label
               >
@@ -346,7 +403,11 @@
                 <div class="row justify-content-between">
                   <div class="col-4 bg-white rounded-3 p-2 w-32">
                     <div class="time">
-                      <img src="/src/assets/images/icons/mdi_clock.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/mdi_clock.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0">12:45</p>
                     </div>
                   </div>
@@ -362,7 +423,11 @@
                   </div>
                   <div class="col-4 bg-white rounded-3 p-2 w-32">
                     <div class="heart-beat">
-                      <img src="/src/assets/images/icons/Vector.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/Vector.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0 lh-1">68<br /><small>次/分</small></p>
                     </div>
                   </div>
@@ -378,7 +443,11 @@
                   </div>
                   <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
                     <div class="spo2">
-                      <img src="/src/assets/images/icons/SpO2.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/SpO2.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0">98 <small>%</small></p>
                     </div>
                   </div>
@@ -394,7 +463,11 @@
                   </div>
                   <div class="col-6 bg-white rounded-3 p-2 w-49">
                     <div class="awake">
-                      <img src="/src/assets/images/icons/mdi_bed.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/mdi_bed.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0 lh-1"><br />清醒</p>
                     </div>
                   </div>
@@ -431,7 +504,11 @@
                 <div class="row justify-content-between">
                   <div class="col-4 bg-white rounded-3 p-2 w-32">
                     <div class="time">
-                      <img src="/src/assets/images/icons/mdi_clock.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/mdi_clock.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0">12:45</p>
                     </div>
                   </div>
@@ -447,7 +524,11 @@
                   </div>
                   <div class="col-4 bg-white rounded-3 p-2 w-32">
                     <div class="heart-beat">
-                      <img src="/src/assets/images/icons/Vector.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/Vector.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0 lh-1">68<br /><small>次/分</small></p>
                     </div>
                   </div>
@@ -463,7 +544,11 @@
                   </div>
                   <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
                     <div class="spo2">
-                      <img src="/src/assets/images/icons/SpO2.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/SpO2.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0">98 <small>%</small></p>
                     </div>
                   </div>
@@ -479,7 +564,11 @@
                   </div>
                   <div class="col-6 bg-white rounded-3 p-2 w-49">
                     <div class="awake">
-                      <img src="/src/assets/images/icons/mdi_bed.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/mdi_bed.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0 lh-1"><br />清醒</p>
                     </div>
                   </div>
@@ -516,7 +605,11 @@
                 <div class="row justify-content-between">
                   <div class="col-4 bg-white rounded-3 p-2 w-32">
                     <div class="time">
-                      <img src="/src/assets/images/icons/mdi_clock.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/mdi_clock.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0">12:45</p>
                     </div>
                   </div>
@@ -532,7 +625,11 @@
                   </div>
                   <div class="col-4 bg-white rounded-3 p-2 w-32">
                     <div class="heart-beat">
-                      <img src="/src/assets/images/icons/Vector.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/Vector.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0 lh-1">68<br /><small>次/分</small></p>
                     </div>
                   </div>
@@ -548,7 +645,11 @@
                   </div>
                   <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
                     <div class="spo2">
-                      <img src="/src/assets/images/icons/SpO2.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/SpO2.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0">98 <small>%</small></p>
                     </div>
                   </div>
@@ -564,7 +665,11 @@
                   </div>
                   <div class="col-6 bg-white rounded-3 p-2 w-49">
                     <div class="awake">
-                      <img src="/src/assets/images/icons/mdi_bed.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/mdi_bed.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0 lh-1"><br />清醒</p>
                     </div>
                   </div>
@@ -601,7 +706,11 @@
                 <div class="row justify-content-between">
                   <div class="col-4 bg-white rounded-3 p-2 w-32">
                     <div class="time">
-                      <img src="/src/assets/images/icons/mdi_clock.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/mdi_clock.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0">12:45</p>
                     </div>
                   </div>
@@ -617,7 +726,11 @@
                   </div>
                   <div class="col-4 bg-white rounded-3 p-2 w-32">
                     <div class="heart-beat">
-                      <img src="/src/assets/images/icons/Vector.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/Vector.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0 lh-1">68<br /><small>次/分</small></p>
                     </div>
                   </div>
@@ -633,7 +746,11 @@
                   </div>
                   <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
                     <div class="spo2">
-                      <img src="/src/assets/images/icons/SpO2.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/SpO2.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0">98 <small>%</small></p>
                     </div>
                   </div>
@@ -649,7 +766,11 @@
                   </div>
                   <div class="col-6 bg-white rounded-3 p-2 w-49">
                     <div class="awake">
-                      <img src="/src/assets/images/icons/mdi_bed.svg" class="img-fluid" alt="" />
+                      <img
+                        src="/src/assets/images/icons/mdi_bed.svg"
+                        class="img-fluid"
+                        alt=""
+                      />
                       <p class="mb-0 lh-1"><br />清醒</p>
                     </div>
                   </div>
@@ -700,32 +821,32 @@
 </template>
 <script setup>
 /* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* import specific icons */
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
 
 /* add icons to the library */
-library.add(fab, fas, far)
+library.add(fab, fas, far);
 
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 function gotoPrev() {
-  console.log('gotoPrev')
-  router.push('/list')
+  console.log("gotoPrev");
+  router.push("/list");
 }
 
 function insertLife() {
-  router.push('/insertlife')
+  router.push("/insertlife");
 }
 function gotoSign() {
-  router.push('/sign')
+  router.push("/sign");
 }
 </script>
 <style scoped>
@@ -745,7 +866,7 @@ function gotoSign() {
   height: 150px;
 }
 .life .bg-orange::before {
-  content: '*';
+  content: "*";
   width: 1px;
   height: 12px;
   color: red;
