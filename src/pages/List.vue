@@ -1,371 +1,82 @@
 <template>
-  <div class="container-fluid bg-blue header">
-    <div class="row justify-content-center align-items-center h-100">
-      <div class="col-8">
-        <div class="header_avatar d-flex">
-          <div class="avatar position-relative">
-            <div>
-              <img
-                src="https://randomuser.me/api/portraits/men/75.jpg"
-                alt=""
-                class="img-fluid rounded-circle"
-              />
-            </div>
-            <p
-              class="text-light bg-orange fs-4 text-center position-absolute online-status"
-            >
-              在線中
-            </p>
-          </div>
-          <div class="avatar_detail ms-4 text-light">
-            <div class="name fw-bold mb-1">林美美</div>
-            <div class="med-status">
-              <p class="location mb-0 lh-sm">屏東縣琉球鄉衛生所</p>
-              <p class="title lh-sm">護理人員</p>
-              <div class="referral-status d-flex text-center fw-bold">
-                <div class="referral-ing">
-                  <p class="referraling-count fs-5 mb-0">36</p>
-                  <p>轉診中</p>
-                </div>
-                <div class="referral-finished ms-3">
-                  <p class="referral-finish-count fs-5 mb-0">124</p>
-                  <p>轉診完成</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div v-show="SearchBool" class="container-fluid bg-blue h-[108px] border-2 border-transparent">
+    <div class="flex items-center justify-content-between pb-1 px-4 h-full mt-4">
+      <div class="w-[80px] cursor-pointer" @click="ShowSearchFn(false)">
+        <p class="text-white">
+          <font-awesome-icon :icon="['fas', 'angle-left']" size="xl" style="color: #ffffff" />
+          搜尋
+        </p>
+      </div>
+      <div class="w-full relative top-[-5px] ml-4 mr-20">
+        <search-svg class="absolute left-2 top-2" />
+        <input
+          class="text-[#FFF] placeholder:text-[#FFF] placeholder:font-bold focus:outline-none bg-[#ffffff8f] h-[40px] w-full px-10"
+          placeholder="請輸入病患姓名或病患身分證號"
+        />
       </div>
     </div>
   </div>
-  <div class="container-fluid bg-lightblue list-content">
-    <div class="row justify-content-center">
-      <div class="col-8 my-3">
-        <h2 class="color-darkblue fs-5">
-          救護紀錄表清單 <span class="text-gray">(36)</span>
-        </h2>
-        <ul class="list-unstyled">
-          <li class="my-3" @click="gotoDetail">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-3 d-flex justify-content-end align-items-center">
-                  <div class="rounded-circle bg-danger me-3 hospital-short">
-                    <p class="text-white text-center fw-bold fs-3">安</p>
-                  </div>
-                </div>
-                <div class="col-md-9">
-                  <div class="card-body">
-                    <div class="card-text mb-2">
-                      <span class="position-relative">
-                        <span class="fw-bold pe-3">彭Ｏ慧</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">98342OO</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">24歲</span>
-                      </span>
-                      <span class="position-relative">
-                        <span>女</span>
-                      </span>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="text-gray mb-0 lh-1">屏東縣琉球鄉衛生所</p>
-                      <p class="text-gray mb-0 lh-1">鄭敏翔 / 家醫科</p>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="mb-0 lh-1">急診治療</p>
-                      <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
-                    </div>
-                    <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">
-                        轉診申請時間: <span>2023-12-17 08:00</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="my-3" @click="gotoDetail">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-3 d-flex justify-content-end align-items-center">
-                  <div class="rounded-circle bg-danger me-3 hospital-short">
-                    <p class="text-white text-center fw-bold fs-3">安</p>
-                  </div>
-                </div>
-                <div class="col-md-9">
-                  <div class="card-body">
-                    <div class="card-text mb-2">
-                      <span class="position-relative">
-                        <span class="fw-bold pe-3">彭Ｏ慧</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">98342OO</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">24歲</span>
-                      </span>
-                      <span class="position-relative">
-                        <span>女</span>
-                      </span>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="text-gray mb-0 lh-1">屏東縣琉球鄉衛生所</p>
-                      <p class="text-gray mb-0 lh-1">鄭敏翔 / 家醫科</p>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="mb-0 lh-1">急診治療</p>
-                      <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
-                    </div>
-                    <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">
-                        轉診申請時間: <span>2023-12-17 08:00</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="my-3" @click="gotoDetail">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-3 d-flex justify-content-end align-items-center">
-                  <div class="rounded-circle bg-danger me-3 hospital-short">
-                    <p class="text-white text-center fw-bold fs-3">安</p>
-                  </div>
-                </div>
-                <div class="col-md-9">
-                  <div class="card-body">
-                    <div class="card-text mb-2">
-                      <span class="position-relative">
-                        <span class="fw-bold pe-3">彭Ｏ慧</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">98342OO</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">24歲</span>
-                      </span>
-                      <span class="position-relative">
-                        <span>女</span>
-                      </span>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="text-gray mb-0 lh-1">屏東縣琉球鄉衛生所</p>
-                      <p class="text-gray mb-0 lh-1">鄭敏翔 / 家醫科</p>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="mb-0 lh-1">急診治療</p>
-                      <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
-                    </div>
-                    <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">
-                        轉診申請時間: <span>2023-12-17 08:00</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="my-3" @click="gotoDetail">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-3 d-flex justify-content-end align-items-center">
-                  <div class="rounded-circle bg-danger me-3 hospital-short">
-                    <p class="text-white text-center fw-bold fs-3">安</p>
-                  </div>
-                </div>
-                <div class="col-md-9">
-                  <div class="card-body">
-                    <div class="card-text mb-2">
-                      <span class="position-relative">
-                        <span class="fw-bold pe-3">彭Ｏ慧</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">98342OO</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">24歲</span>
-                      </span>
-                      <span class="position-relative">
-                        <span>女</span>
-                      </span>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="text-gray mb-0 lh-1">屏東縣琉球鄉衛生所</p>
-                      <p class="text-gray mb-0 lh-1">鄭敏翔 / 家醫科</p>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="mb-0 lh-1">急診治療</p>
-                      <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
-                    </div>
-                    <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">
-                        轉診申請時間: <span>2023-12-17 08:00</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="my-3" @click="gotoDetail">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-3 d-flex justify-content-end align-items-center">
-                  <div class="rounded-circle bg-danger me-3 hospital-short">
-                    <p class="text-white text-center fw-bold fs-3">安</p>
-                  </div>
-                </div>
-                <div class="col-md-9">
-                  <div class="card-body">
-                    <div class="card-text mb-2">
-                      <span class="position-relative">
-                        <span class="fw-bold pe-3">彭Ｏ慧</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">98342OO</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">24歲</span>
-                      </span>
-                      <span class="position-relative">
-                        <span>女</span>
-                      </span>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="text-gray mb-0 lh-1">屏東縣琉球鄉衛生所</p>
-                      <p class="text-gray mb-0 lh-1">鄭敏翔 / 家醫科</p>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="mb-0 lh-1">急診治療</p>
-                      <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
-                    </div>
-                    <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">
-                        轉診申請時間: <span>2023-12-17 08:00</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="my-3" @click="gotoDetail">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-3 d-flex justify-content-end align-items-center">
-                  <div class="rounded-circle bg-danger me-3 hospital-short">
-                    <p class="text-white text-center fw-bold fs-3">安</p>
-                  </div>
-                </div>
-                <div class="col-md-9">
-                  <div class="card-body">
-                    <div class="card-text mb-2">
-                      <span class="position-relative">
-                        <span class="fw-bold pe-3">彭Ｏ慧</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">98342OO</span>
-                      </span>
-                      <span class="position-relative">
-                        <span class="px-3">24歲</span>
-                      </span>
-                      <span class="position-relative">
-                        <span>女</span>
-                      </span>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="text-gray mb-0 lh-1">屏東縣琉球鄉衛生所</p>
-                      <p class="text-gray mb-0 lh-1">鄭敏翔 / 家醫科</p>
-                    </div>
-                    <div class="card-text mb-2">
-                      <p class="mb-0 lh-1">急診治療</p>
-                      <p class="mb-0 lh-1">轉入 / 東港安泰醫院</p>
-                    </div>
-                    <div class="card-text">
-                      <p class="text-gray mb-0 lh-1">
-                        轉診申請時間: <span>2023-12-17 08:00</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid bg-blue footer">
-    <div class="row justify-content-center">
-      <div class="col">
-        <div class="bottom d-flex text-center text-light align-items-center">
-          <div class="search col">
-            <a href="#" class="text-light text-decoration-none">
-              <font-awesome-icon
-                :icon="['fas', 'magnifying-glass']"
-                style="color: #ffffff"
-                size="2xl"
-              />
-              <p class="mb-0">搜尋</p>
-            </a>
+  <!-- header -->
+  <list-header v-if="!SearchBool" />
+  <my-dialog v-model="LogOutModel" />
+  <list-content :style="SearchBool ? 'min-height: 900px' : 'min-height: 800px'" />
+  <!-- footer -->
+  <div class="container-fluid bg-blue h-[100px] fixed bottom-0 w-full">
+    <div class="flex justify-center">
+      <div class="w-full mx-auto pt-1">
+        <div class="w-1/2 flex text-center text-light items-center justify-between mx-auto xl:pt-4">
+          <div
+            @click="ShowSearchFn(true)"
+            class="flex justify-center flex-wrap cursor-pointer w-[80px] gap-y-1"
+          >
+            <search-svg />
+            <p class="w-full">搜尋</p>
           </div>
-          <!-- <div class="home col">
-            <a href="#" class="text-light text-decoration-none">
-              <font-awesome-icon
-                :icon="['fas', 'house']"
-                style="color: #ffffff"
-                size="2xl"
-              />
-              <p class="mb-0">首頁</p>
-            </a>
-          </div> -->
-          <div class="logout col">
-            <a href="#" class="text-light text-decoration-none" @click.prevent="logout">
-              <font-awesome-icon
-                :icon="['fas', 'arrow-right-from-bracket']"
-                size="2xl"
-                style="color: #ffffff"
-              />
-              <p class="mb-0">登出</p>
-            </a>
+          <div
+            @click.prevent="OpenNoticeBool"
+            class="flex justify-center flex-wrap cursor-pointer w-[80px] gap-y-1"
+          >
+            <logout-svg />
+            <p class="w-full">登出</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script setup>
-/* import the fontawesome core */
-import { library } from "@fortawesome/fontawesome-svg-core";
-
 /* import font awesome icon component */
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
 
 /* add icons to the library */
-library.add(fab, fas, far);
+library.add(fab, fas, far)
 
-import { useRouter } from "vue-router";
-const router = useRouter();
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 function gotoDetail() {
-  console.log("gotoDetail");
-  router.push("/detail");
+  console.log('gotoDetail')
+  router.push('/detail')
 }
 
-function logout() {
-  router.push("/");
+const SearchBool = ref(false)
+const ShowSearchFn = (key) => {
+  SearchBool.value = key
+}
+
+const LogOutModel = ref({
+  NoticeMsg: `<span>無網路狀態將無法登入系統。</span><br><span>是否確定登出?</span>`,
+  ConfirmKey: '登出',
+  NoticeBool: false
+})
+const OpenNoticeBool = () => {
+  LogOutModel.value.NoticeBool = true
 }
 </script>
 
@@ -386,7 +97,7 @@ function logout() {
   color: #aaa;
 }
 .header {
-  height: 300px;
+  height: 220px;
   position: sticky;
   top: 0;
   z-index: 9999;
@@ -400,13 +111,16 @@ function logout() {
   border-radius: 10px;
 }
 .list-content {
-  height: 966px;
+  /* max-height: 966px; */
   overflow-x: hidden;
   overflow-y: scroll;
 }
+.list-content::-webkit-scrollbar {
+  width: 0;
+}
 .footer {
   height: 100px;
-  position: sticky;
+  position: fixed;
   bottom: 0;
 }
 .bottom {
@@ -416,7 +130,7 @@ function logout() {
   border-width: 0;
 }
 span:nth-child(1) span:after {
-  content: "";
+  content: '';
   width: 1px;
   height: 12px;
   background-color: #000;
@@ -425,7 +139,7 @@ span:nth-child(1) span:after {
   top: 4px;
 }
 span:nth-child(2) span:after {
-  content: "";
+  content: '';
   width: 1px;
   height: 12px;
   background-color: #000;
@@ -434,7 +148,7 @@ span:nth-child(2) span:after {
   top: 4px;
 }
 span:nth-child(3) span:after {
-  content: "";
+  content: '';
   width: 1px;
   height: 12px;
   background-color: #000;

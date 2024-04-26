@@ -14,6 +14,7 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 library.add(fab, fas, far)
 </script>
 
+<!-- login -->
 <template>
   <div class="container">
     <div class="row justify-content-center mb-5">
@@ -70,7 +71,7 @@ library.add(fab, fas, far)
         <label class="form-check-label fs-4" for="flexSwitchCheckDefault">記住帳號</label>
       </div>
       <div class="d-grid gap-2 mt-3">
-        <button class="btn py-2" type="button" @click="loginHandle">登入</button>
+        <router-link class="btn py-2" to="/list">登入</router-link>
       </div>
     </div>
   </div>
@@ -78,8 +79,12 @@ library.add(fab, fas, far)
 
 <style scoped>
 .container {
-  margin-top: 400px;
-  padding: 0 200px;
+  max-width: 800px;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -40%);
+  padding: 0 100px;
 }
 ::placeholder {
   color: gray;

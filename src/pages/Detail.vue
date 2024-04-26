@@ -1,157 +1,152 @@
+<script setup>
+// swiper
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { FreeMode, Pagination } from 'swiper/modules'
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import specific icons */
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
+/* add icons to the library */
+library.add(fab, fas, far)
+
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+function gotoPrev() {
+  console.log('gotoPrev')
+  router.push('/list')
+}
+
+function insertLife() {
+  router.push('/insertlife')
+}
+function gotoSign() {
+  router.push('/sign')
+}
+
+const selectedAttendanceUnit = ref('救護船')
+const selectedPort = ref('鹽埔')
+const selectedCatheter = ref([])
+
+const swiperData = ref(['test1', 'test2', 'test3', 'test4', 5, 6, 7, 8, 9, 10])
+const logVal = (val) => {
+  console.log(val)
+}
+</script>
+
 <template>
   <div class="container-fluid bg-blue header sticky-top">
-    <div class="row align-items-end justify-content-between h-100 pb-3 px-5">
-      <div class="col-3">
+    <div class="flex items-end justify-content-between h-100 pb-1 px-4">
+      <div class="w-[120px]">
         <p class="text-white" @click="gotoPrev">
-          <font-awesome-icon
-            :icon="['fas', 'angle-left']"
-            size="xl"
-            style="color: #ffffff"
-          />
+          <font-awesome-icon :icon="['fas', 'angle-left']" size="xl" style="color: #ffffff" />
           救護紀錄表
         </p>
       </div>
-      <div class="col-1">
+      <div class="flex-1 text-center relative top-[-10px]">
+        <div class="text-[17px] flex justify-center items-center text-[#FFF] max-w-[400px] mx-auto">
+          <span class="w-1/6 text-left"> 彭O 慧 </span>
+          <span class="w-[1px] h-[20px] inline-block bg-[#FFF]"></span>
+          <span class="w-1/3 text-center"> A12345OOOO</span>
+          <span class="w-[1px] h-[20px] inline-block bg-[#FFF]"></span>
+          <span class="w-1/6 text-center"> 24歲 </span>
+          <span class="w-[1px] h-[20px] inline-block bg-[#FFF]"></span>
+          <span class="w-1/6 text-center"> 女 </span>
+        </div>
+      </div>
+      <div class="w-[100px]">
         <p class="text-white text-end" @click="gotoSign">
-          <font-awesome-icon
-            :icon="['fas', 'pen-clip']"
-            size="xl"
-            style="color: #ffffff"
-          />
+          <font-awesome-icon :icon="['fas', 'pen-clip']" size="xl" style="color: #ffffff" />
         </p>
       </div>
     </div>
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12 information">
-        <p class="bg-orange fw-bold px-5 lh-lg">病人資訊</p>
-        <div class="row px-5">
-          <div class="col-4">
-            <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">病例號</span>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value="456789"
-                disabled
-              />
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1"
-                >病患姓名</span
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value="王大明"
-                disabled
-              />
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1"
-                >身分證字號</span
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value="A123456789"
-                disabled
-              />
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">性別</span>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value="男"
-                disabled
-              />
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1"
-                >出生日期</span
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value="1999-01-01"
-                disabled
-              />
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">年齡</span>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value="35 歲"
-                disabled
-              />
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="record">
-        <p class="bg-orange fw-bold px-5 lh-lg">出勤紀錄</p>
-        <div class="row px-5 gx-0">
+        <p class="bg-orange fw-bold px-12 lh-lg">出勤紀錄</p>
+        <div class="row px-4 gx-0">
           <div class="col-4 w-315">
             <div class="input-group mb-3">
               <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
-                ><span class="text-danger">*</span>出勤單位及漁港</span
+                ><span class="text-danger">*</span>出勤單位</span
               >
             </div>
           </div>
-          <div class="col-4 w-35">
+          <div class="col-8 ml-1">
+            <input
+              v-model="selectedAttendanceUnit"
+              value="救護船"
+              type="radio"
+              class="btn-check"
+              id="AttendanceUnits1"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary w-[85px]" for="AttendanceUnits1">救護船</label>
+            <input
+              v-model="selectedAttendanceUnit"
+              value="海巡"
+              type="radio"
+              class="btn-check"
+              id="AttendanceUnits2"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary w-[85px] ms-3" for="AttendanceUnits2">海巡</label>
+            <input
+              value="其他"
+              v-model="selectedAttendanceUnit"
+              type="radio"
+              class="btn-check"
+              id="AttendanceUnits3"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary w-[85px] ms-3" for="AttendanceUnits3">其他</label>
+          </div>
+          <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">單位</span>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value="救護船"
-              />
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
+                ><span class="text-danger">*</span>漁港</span
+              >
             </div>
           </div>
-          <div class="col-4">
-            <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">漁港</span>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>鹽埔</option>
-                <option value="1">鹽埔1</option>
-                <option value="2">鹽埔2</option>
-                <option value="3">鹽埔3</option>
-              </select>
-            </div>
+          <div class="col-8 ml-1">
+            <input
+              v-model="selectedPort"
+              value="鹽埔"
+              type="radio"
+              class="btn-check"
+              id="Port1"
+              name="Port"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary w-[85px]" for="Port1">鹽埔</label>
+            <input
+              v-model="selectedPort"
+              value="東港"
+              type="radio"
+              class="btn-check"
+              id="Port2"
+              name="Port"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary w-[85px] ms-3" for="Port2">東港</label>
+            <input
+              v-model="selectedPort"
+              value="其他"
+              type="radio"
+              class="btn-check"
+              id="Port3"
+              name="Port"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary w-[85px] ms-3" for="Port3">其他</label>
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
@@ -160,9 +155,13 @@
               >
             </div>
           </div>
-          <div class="col-8 w-684">
-            <div class="input-group mb-3">
-              <input type="datetime-local" class="form-control" />
+          <div class="col-8 w-684 relative">
+            <div class="input-group mb-3 cursor-pointer">
+              <span
+                class="border-b-2 border-[#DEE2E6] w-full h-[40px] leading-[40px] pl-2 font-bold flex items-center"
+                >2023年12月12日 10:00</span
+              >
+              <dropdown-svg />
             </div>
           </div>
           <div class="col-4 w-315">
@@ -172,37 +171,24 @@
               >
             </div>
           </div>
-          <div class="col-4 w-35">
-            <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">到達</span>
-              <input
-                type="datetime-local"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value="救護船"
-              />
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue" id="basic-addon1">轉出</span>
-              <input
-                type="datetime-local"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value="救護船"
-              />
+          <div class="col-8 w-684 relative">
+            <div class="input-group mb-3 cursor-pointer">
+              <span
+                class="border-b-2 border-[#DEE2E6] w-full h-[40px] leading-[40px] pl-2 font-bold flex items-center"
+              >
+                <span class="text-[#9D9FA3] mr-4">到達</span>
+                <span>2023年12月12日 10:15</span>
+                <span class="text-[#9D9FA3] mx-4">轉出</span>
+                <span>10:20</span>
+              </span>
+              <dropdown-svg />
             </div>
           </div>
         </div>
       </div>
       <div class="notice">
-        <p class="bg-orange fw-bold px-5 lh-lg">交接注意事項</p>
-        <div class="row px-5 gx-0">
+        <p class="bg-orange fw-bold px-12 lh-lg">交接注意事項</p>
+        <div class="row px-4 gx-0">
           <div class="col-4 w-315">
             <div class="input-group mb-3">
               <span class="input-group-text bg-lightblue w-100 lh-78" id="basic-addon1"
@@ -211,8 +197,10 @@
             </div>
           </div>
           <div class="col-8 d-flex ms-1 flex-column">
-            <div class="pipeline">
+            <div class="">
               <input
+                v-model="selectedCatheter"
+                value="鼻胃管"
                 type="checkbox"
                 class="btn-check"
                 id="nasogastric-tube"
@@ -220,24 +208,26 @@
               />
               <label class="btn btn-outline-primary" for="nasogastric-tube">鼻胃管</label>
               <input
+                v-model="selectedCatheter"
+                value="導尿管"
                 type="checkbox"
                 class="btn-check"
                 id="Urinary-catheter"
                 autocomplete="off"
               />
-              <label class="btn btn-outline-primary ms-3" for="Urinary-catheter"
-                >導尿管</label
-              >
+              <label class="btn btn-outline-primary ms-3" for="Urinary-catheter">導尿管</label>
               <input
+                v-model="selectedCatheter"
+                value="氣管內管"
                 type="checkbox"
                 class="btn-check"
                 id="Endotracheal-tube"
                 autocomplete="off"
               />
-              <label class="btn btn-outline-primary ms-3" for="Endotracheal-tube"
-                >氣管內管</label
-              >
+              <label class="btn btn-outline-primary ms-3" for="Endotracheal-tube">氣管內管</label>
               <input
+                v-model="selectedCatheter"
+                value="靜脈注射"
                 type="checkbox"
                 class="btn-check"
                 id="intravenous-injection"
@@ -246,14 +236,24 @@
               <label class="btn btn-outline-primary ms-3" for="intravenous-injection"
                 >靜脈注射</label
               >
-            </div>
-            <div class="pipeline-detail mt-3 w-1002">
               <input
-                type="text"
-                class="form-control"
-                id="exampleFormControlInput1"
-                placeholder="其他_請詳述"
+                v-model="selectedCatheter"
+                value="其他"
+                type="checkbox"
+                class="btn-check"
+                id="Endotracheal-other"
+                autocomplete="off"
               />
+              <label class="btn btn-outline-primary ms-3" for="Endotracheal-other">其他 </label>
+              <span class="relative w-[450px] inline-block">
+                <input
+                  :disabled="!selectedCatheter.includes('其他')"
+                  type="text"
+                  class="form-control w-full absolute top-[-5px] left-1 2xl:top-[24px] 2xl:left-[-450px]"
+                  id="exampleFormControlInput1"
+                  placeholder="請輸入其他說明"
+                />
+              </span>
             </div>
           </div>
           <div class="col-4 w-315">
@@ -263,20 +263,20 @@
               >
             </div>
           </div>
-          <div class="col-8 ms-1 position-relative">
+          <div class="col-8 ms-1 position-relative pb-2">
             <textarea
-              class="form-control w-1002"
+              class="form-control w-full"
               placeholder="財務或其他_請詳述"
               id="floatingTextarea2"
               style="height: 93px"
             ></textarea>
-            <span class="text-count position-absolute text-secondary">0/200</span>
+            <span class="right-2 bottom-4 position-absolute text-secondary">0/200</span>
           </div>
         </div>
       </div>
       <div class="action-item">
-        <p class="bg-orange fw-bold px-5 lh-lg">處置項目</p>
-        <div class="row px-5 gx-0">
+        <p class="bg-orange fw-bold px-12 lh-lg">處置項目</p>
+        <div class="row px-4 gx-0">
           <div class="col-4 w-315">
             <div class="input-group mb-3">
               <span class="input-group-text bg-lightblue w-100 lh-78" id="basic-addon1"
@@ -286,11 +286,12 @@
           </div>
           <div class="col-8 ms-1 position-relative">
             <textarea
-              class="form-control w-1002"
+              class="form-control"
               placeholder="如有_請詳述"
               id="floatingTextarea1"
               style="height: 93px"
             ></textarea>
+            <span class="right-2 bottom-4 position-absolute text-secondary">0/200</span>
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
@@ -301,32 +302,22 @@
           </div>
           <div class="col-8 d-flex ms-1 flex-column w-678">
             <div class="d-flex">
-              <div class="input-group mb-3 w-50">
-                <span class="input-group-text bg-lightblue">CPR</span>
-                <input
-                  type="text"
-                  class="form-control"
-                  aria-label="Amount (to the nearest dollar)"
-                />
-                <span class="input-group-text bg-lightblue">分鐘</span>
-              </div>
-              <div class="input-group mb-3 w-50">
-                <span class="input-group-text bg-lightblue">AED</span>
-                <input
-                  type="text"
-                  class="form-control"
-                  aria-label="Amount (to the nearest dollar)"
-                />
-                <span class="input-group-text bg-lightblue">次</span>
+              <div class="input-group mb-3 cursor-pointer">
+                <span
+                  class="border-b-2 border-[#DEE2E6] w-full h-[40px] leading-[40px] pl-2 font-bold flex items-center"
+                >
+                  <span class="text-[#9D9FA3] ml-4 mr-8">CPR</span>
+                  <span class="inline-block w-[80px] text-right pr-2">62</span>
+                  <span class="text-[#9D9FA3] ml-2 mr-8">分鐘</span>
+                  <span class="text-[#9D9FA3] mx-2">AED</span>
+                  <span class="inline-block w-[80px] text-right pr-2">62</span>
+                  <span class="text-[#9D9FA3] mx-2">次</span>
+                </span>
+                <dropdown-svg />
               </div>
             </div>
             <div>
-              <input
-                type="checkbox"
-                class="btn-check"
-                id="btn-check-outlined"
-                autocomplete="off"
-              />
+              <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" />
               <label class="btn btn-outline-primary w-100" for="btn-check-outlined"
                 >不建議電擊</label
               >
@@ -341,7 +332,7 @@
           </div>
           <div class="col-8 ms-1 position-relative">
             <textarea
-              class="form-control w-1002"
+              class="form-control"
               placeholder="如有_請詳述"
               id="floatingTextarea1"
               style="height: 93px"
@@ -349,19 +340,12 @@
           </div>
           <div class="col-4 w-315">
             <div class="input-group mb-3">
-              <span class="input-group-text bg-lightblue w-100" id="basic-addon1"
-                >其他處置</span
-              >
+              <span class="input-group-text bg-lightblue w-100" id="basic-addon1">其他處置</span>
             </div>
           </div>
           <div class="col-8 ms-1 position-relative">
             <div class="pipeline">
-              <input
-                type="checkbox"
-                class="btn-check"
-                id="keep-warm"
-                autocomplete="off"
-              />
+              <input type="checkbox" class="btn-check" id="keep-warm" autocomplete="off" />
               <label class="btn btn-outline-primary" for="keep-warm">保暖</label>
               <input
                 type="checkbox"
@@ -372,21 +356,9 @@
               <label class="btn btn-outline-primary ms-3" for="psychological-support"
                 >心理支持</label
               >
-              <input
-                type="checkbox"
-                class="btn-check"
-                id="als-support"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary ms-3" for="als-support"
-                >ALS 支持</label
-              >
-              <input
-                type="checkbox"
-                class="btn-check"
-                id="life-monitor"
-                autocomplete="off"
-              />
+              <input type="checkbox" class="btn-check" id="als-support" autocomplete="off" />
+              <label class="btn btn-outline-primary ms-3" for="als-support">ALS 支持</label>
+              <input type="checkbox" class="btn-check" id="life-monitor" autocomplete="off" />
               <label class="btn btn-outline-primary ms-3" for="life-monitor"
                 >僅做生命徵象監測</label
               >
@@ -395,423 +367,28 @@
         </div>
       </div>
       <div class="life position-relative">
-        <p class="bg-orange fw-bold px-5 lh-lg">生命徵象</p>
-        <div class="row px-5 life-card g-1">
-          <div class="col-4 mb-3">
-            <div class="card text-center bg-darkblue">
-              <div class="card-body">
-                <div class="row justify-content-between">
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="time">
-                      <img
-                        src="/src/assets/images/icons/mdi_clock.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">12:45</p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="breathe">
-                      <img
-                        src="/src/assets/images/icons/ri_lungs-fill.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">23<br /><small>次/分</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="heart-beat">
-                      <img
-                        src="/src/assets/images/icons/Vector.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">68<br /><small>次/分</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="temperature">
-                      <img
-                        src="/src/assets/images/icons/uil_temperature.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">36 <small>&deg;C</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="spo2">
-                      <img
-                        src="/src/assets/images/icons/SpO2.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">98 <small>%</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="pressure">
-                      <img
-                        src="/src/assets/images/icons/streamline_wave-signal.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">130/77<br /><small>mmHG</small></p>
-                    </div>
-                  </div>
-                  <div class="col-6 bg-white rounded-3 p-2 w-49">
-                    <div class="awake">
-                      <img
-                        src="/src/assets/images/icons/mdi_bed.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1"><br />清醒</p>
-                    </div>
-                  </div>
-                  <div class="col-6 bg-white rounded-3 p-2 w-49">
-                    <div class="evm">
-                      <img
-                        src="/src/assets/images/icons/mdi_letter-e-circle.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <img
-                        src="/src/assets/images/icons/mdi_letter-v-circle.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <img
-                        src="/src/assets/images/icons/tabler_circle-letter-m-filled.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1"><br />3 | 3 | 3</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer text-white bg-darkblue text-start border-top-0">
-                張美麗(NO.35884)
-              </div>
-            </div>
-          </div>
-          <div class="col-4 mb-3">
-            <div class="card text-center bg-darkblue">
-              <div class="card-body">
-                <div class="row justify-content-between">
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="time">
-                      <img
-                        src="/src/assets/images/icons/mdi_clock.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">12:45</p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="breathe">
-                      <img
-                        src="/src/assets/images/icons/ri_lungs-fill.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">23<br /><small>次/分</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="heart-beat">
-                      <img
-                        src="/src/assets/images/icons/Vector.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">68<br /><small>次/分</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="temperature">
-                      <img
-                        src="/src/assets/images/icons/uil_temperature.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">36 <small>&deg;C</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="spo2">
-                      <img
-                        src="/src/assets/images/icons/SpO2.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">98 <small>%</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="pressure">
-                      <img
-                        src="/src/assets/images/icons/streamline_wave-signal.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">130/77<br /><small>mmHG</small></p>
-                    </div>
-                  </div>
-                  <div class="col-6 bg-white rounded-3 p-2 w-49">
-                    <div class="awake">
-                      <img
-                        src="/src/assets/images/icons/mdi_bed.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1"><br />清醒</p>
-                    </div>
-                  </div>
-                  <div class="col-6 bg-white rounded-3 p-2 w-49">
-                    <div class="evm">
-                      <img
-                        src="/src/assets/images/icons/mdi_letter-e-circle.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <img
-                        src="/src/assets/images/icons/mdi_letter-v-circle.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <img
-                        src="/src/assets/images/icons/tabler_circle-letter-m-filled.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1"><br />3 | 3 | 3</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer text-white bg-darkblue text-start border-top-0">
-                張美麗(NO.35884)
-              </div>
-            </div>
-          </div>
-          <div class="col-4 mb-3">
-            <div class="card text-center bg-darkblue">
-              <div class="card-body">
-                <div class="row justify-content-between">
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="time">
-                      <img
-                        src="/src/assets/images/icons/mdi_clock.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">12:45</p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="breathe">
-                      <img
-                        src="/src/assets/images/icons/ri_lungs-fill.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">23<br /><small>次/分</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="heart-beat">
-                      <img
-                        src="/src/assets/images/icons/Vector.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">68<br /><small>次/分</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="temperature">
-                      <img
-                        src="/src/assets/images/icons/uil_temperature.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">36 <small>&deg;C</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="spo2">
-                      <img
-                        src="/src/assets/images/icons/SpO2.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">98 <small>%</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="pressure">
-                      <img
-                        src="/src/assets/images/icons/streamline_wave-signal.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">130/77<br /><small>mmHG</small></p>
-                    </div>
-                  </div>
-                  <div class="col-6 bg-white rounded-3 p-2 w-49">
-                    <div class="awake">
-                      <img
-                        src="/src/assets/images/icons/mdi_bed.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1"><br />清醒</p>
-                    </div>
-                  </div>
-                  <div class="col-6 bg-white rounded-3 p-2 w-49">
-                    <div class="evm">
-                      <img
-                        src="/src/assets/images/icons/mdi_letter-e-circle.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <img
-                        src="/src/assets/images/icons/mdi_letter-v-circle.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <img
-                        src="/src/assets/images/icons/tabler_circle-letter-m-filled.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1"><br />3 | 3 | 3</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer text-white bg-darkblue text-start border-top-0">
-                張美麗(NO.35884)
-              </div>
-            </div>
-          </div>
-          <div class="col-4 mb-3">
-            <div class="card text-center bg-darkblue">
-              <div class="card-body">
-                <div class="row justify-content-between">
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="time">
-                      <img
-                        src="/src/assets/images/icons/mdi_clock.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">12:45</p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="breathe">
-                      <img
-                        src="/src/assets/images/icons/ri_lungs-fill.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">23<br /><small>次/分</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32">
-                    <div class="heart-beat">
-                      <img
-                        src="/src/assets/images/icons/Vector.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">68<br /><small>次/分</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="temperature">
-                      <img
-                        src="/src/assets/images/icons/uil_temperature.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">36 <small>&deg;C</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="spo2">
-                      <img
-                        src="/src/assets/images/icons/SpO2.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0">98 <small>%</small></p>
-                    </div>
-                  </div>
-                  <div class="col-4 bg-white rounded-3 p-2 w-32 my-1">
-                    <div class="pressure">
-                      <img
-                        src="/src/assets/images/icons/streamline_wave-signal.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1">130/77<br /><small>mmHG</small></p>
-                    </div>
-                  </div>
-                  <div class="col-6 bg-white rounded-3 p-2 w-49">
-                    <div class="awake">
-                      <img
-                        src="/src/assets/images/icons/mdi_bed.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1"><br />清醒</p>
-                    </div>
-                  </div>
-                  <div class="col-6 bg-white rounded-3 p-2 w-49">
-                    <div class="evm">
-                      <img
-                        src="/src/assets/images/icons/mdi_letter-e-circle.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <img
-                        src="/src/assets/images/icons/mdi_letter-v-circle.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <img
-                        src="/src/assets/images/icons/tabler_circle-letter-m-filled.svg"
-                        class="img-fluid"
-                        alt=""
-                      />
-                      <p class="mb-0 lh-1"><br />3 | 3 | 3</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer text-white bg-darkblue text-start border-top-0">
-                張美麗(NO.35884)
-              </div>
-            </div>
-          </div>
-          <div class="col-4 mb-3">
-            <div class="card text-center bg-white">
-              <div class="card-body d-flex align-items-center justify-content-center">
-                <a class="btn d-block w-100 lh-254" href="#" @click.prevent="insertLife">
-                  <img src="/src/assets/images/icons/gg_add.svg" alt="" /> 新增紀錄
-                </a>
-              </div>
-            </div>
+        <p class="bg-orange fw-bold px-12 lh-lg">生命徵象</p>
+        <div class="h-[300px] flex ml-5">
+          <swiper
+            :slidesPerView="2"
+            :spaceBetween="20"
+            :freeMode="true"
+            :modules="modules"
+            class="mySwiper w-4/5 max-w-[700px]"
+          >
+            <swiper-slide v-for="list in swiperData" :key="list" @click="logVal(list)">
+              {{ list }}
+            </swiper-slide>
+          </swiper>
+          <div
+            class="w-1/5 flex items-center justify-center -mt-14 cursor-pointer"
+            @click="insertLife"
+          >
+            <lift-record-add-svg />
+            <span class="font-bold">新增紀錄</span>
           </div>
         </div>
-        <div class="row px-5 btn-list g-1 mb-3">
+        <div class="row px-4 btn-list g-1 mb-3 pb-4 max-w-[768px] mx-auto">
           <a href="#" class="btn btn-primary">送出</a>
           <a href="#" class="btn btn-success">儲存變更</a>
         </div>
@@ -819,37 +396,20 @@
     </div>
   </div>
 </template>
-<script setup>
-/* import the fontawesome core */
-import { library } from "@fortawesome/fontawesome-svg-core";
 
-/* import font awesome icon component */
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-/* import specific icons */
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-
-/* add icons to the library */
-library.add(fab, fas, far);
-
-import { useRouter } from "vue-router";
-const router = useRouter();
-
-function gotoPrev() {
-  console.log("gotoPrev");
-  router.push("/list");
-}
-
-function insertLife() {
-  router.push("/insertlife");
-}
-function gotoSign() {
-  router.push("/sign");
-}
-</script>
 <style scoped>
+.mySwiper {
+  border: 1px solid #f00;
+  height: 240px;
+}
+.swiper-slide {
+  cursor: pointer;
+  border: 1px solid #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container-fluid {
   --bs-gutter-x: 0;
 }
@@ -863,10 +423,10 @@ function gotoSign() {
   background-color: rgb(240, 163, 87);
 }
 .header {
-  height: 150px;
+  height: 108px;
 }
 .life .bg-orange::before {
-  content: "*";
+  content: '*';
   width: 1px;
   height: 12px;
   color: red;
@@ -904,10 +464,7 @@ function gotoSign() {
 .lh-254 {
   line-height: 254px;
 }
-.text-count {
-  bottom: 20px;
-  right: 0;
-}
+
 .bg-darkblue {
   background-color: rgb(100, 137, 177);
 }
@@ -916,5 +473,10 @@ small {
 }
 textarea {
   resize: none;
+}
+.border-b {
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
 }
 </style>
