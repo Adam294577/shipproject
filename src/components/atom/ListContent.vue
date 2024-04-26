@@ -1,4 +1,5 @@
 <script setup>
+import { cloneDeep } from 'lodash-es'
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -9,9 +10,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
-
+// import dayjs from 'dayjs'
+// import { ApiGetAppList, ApiGetIntoHospitalName, ApiGetOutHospitalName } from '@/Api'
 /* add icons to the library */
 library.add(fab, fas, far)
+// dayjs().format()
 
 const route = useRoute()
 const router = useRouter()
@@ -19,6 +22,78 @@ function gotoDetail() {
   console.log('gotoDetail')
   router.push('/detail')
 }
+const TransferOut = reactive({ data: [] })
+const TransferInto = reactive({ data: [] })
+const CardInfo = reactive({ data: [] })
+const CardInfoRender = computed(() => {
+  // let result = []
+  // const CardInfoData = cloneDeep(CardInfo.data) ?? []
+  // const TransferOutData = cloneDeep(TransferOut.data) ?? []
+  // const TransferIntoData = cloneDeep(TransferInto.data) ?? []
+  // CardInfoData.Items.forEach((item) => {
+  //   let obj = {}
+  //   obj.PatientName = item.Patient.Name
+  //   obj.Identifier = item.Patient.Identifier
+  //   obj.Old = item.PatientAge
+  //   obj.Sex = item.Patient.GenderCode
+  //   // 目前唯一申請的醫療機構
+  //   obj.ApplyCare = TransferOutData[0].Name
+  //   obj.ApplyDoctor = item.CreateAccountName
+  //   obj.Department = item.PatientDepartName
+  //   obj.GotoWhere = item.IntoHospitalNo
+  //   // 2024-04-01T00:00:00  -> YYYY-MM-DD HH MM
+  //   obj.ApplyTime = dayjs(item.ApplyTime).format('YYYY-MM-DD HH:mm')
+  //   // obj.ApplyTime = dayjs(item.ApplyTime)
+  //   obj.Aim = item.PurposeOfReferralName
+
+  //   TransferIntoData.forEach((item) => {
+  //     if (item.No === obj.GotoWhere) obj.GotoWhere = item.Name
+  //   })
+  //   result.push(obj)
+  // })
+  // console.log('render', result)
+  return result
+})
+const GetAppList = async () => {
+  try {
+    const res = await ApiGetAppList()
+    if (res.status === 200) {
+      console.log('AppList', res.data)
+      CardInfo.data = cloneDeep(res.data)
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
+const GetIntoHospitalName = async () => {
+  try {
+    const res = await ApiGetIntoHospitalName()
+    if (res.status === 200) {
+      console.log('IntoHos', res.data)
+      TransferInto.data = cloneDeep(res.data)
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
+const GetOutHospitalName = async () => {
+  try {
+    const res = await ApiGetOutHospitalName()
+    if (res.status === 200) {
+      console.log('OutHos', res.data)
+      TransferOut.data = cloneDeep(res.data)
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
+const init = async () => {
+  // await GetOutHospitalName()
+  // await GetIntoHospitalName()
+  // await GetAppList()
+}
+
+// init()
 </script>
 <template>
   <div class="container-fluid bg-lightblue list-content">

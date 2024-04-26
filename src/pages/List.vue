@@ -1,3 +1,41 @@
+<script setup>
+/* import font awesome icon component */
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import specific icons */
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
+import { useRouter } from 'vue-router'
+import { useCounterStore } from '@/stores/counter.js'
+/* add icons to the library */
+library.add(fab, fas, far)
+// const store = useCounterStore()
+// const { UserData } = storeToRefs(store)
+const router = useRouter()
+
+function gotoDetail() {
+  console.log('gotoDetail')
+  router.push('/detail')
+}
+
+const SearchBool = ref(false)
+const ShowSearchFn = (key) => {
+  SearchBool.value = key
+}
+
+const LogOutModel = ref({
+  NoticeMsg: `<span>無網路狀態將無法登入系統。</span><br><span>是否確定登出?</span>`,
+  ConfirmKey: '登出',
+  NoticeBool: false
+})
+const OpenNoticeBool = () => {
+  LogOutModel.value.NoticeBool = true
+}
+</script>
+
 <template>
   <div v-show="SearchBool" class="container-fluid bg-blue h-[108px] border-2 border-transparent">
     <div class="flex items-center justify-content-between pb-1 px-4 h-full mt-4">
@@ -44,41 +82,6 @@
     </div>
   </div>
 </template>
-<script setup>
-/* import font awesome icon component */
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-/* import specific icons */
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-
-/* add icons to the library */
-library.add(fab, fas, far)
-
-import { useRouter } from 'vue-router'
-const router = useRouter()
-
-function gotoDetail() {
-  console.log('gotoDetail')
-  router.push('/detail')
-}
-
-const SearchBool = ref(false)
-const ShowSearchFn = (key) => {
-  SearchBool.value = key
-}
-
-const LogOutModel = ref({
-  NoticeMsg: `<span>無網路狀態將無法登入系統。</span><br><span>是否確定登出?</span>`,
-  ConfirmKey: '登出',
-  NoticeBool: false
-})
-const OpenNoticeBool = () => {
-  LogOutModel.value.NoticeBool = true
-}
-</script>
 
 <style scoped>
 .container-fluid {

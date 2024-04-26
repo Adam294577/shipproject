@@ -1,4 +1,5 @@
 <script setup>
+import { cloneDeep } from 'lodash-es'
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -11,24 +12,13 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { ApiGetCaptcha, ApiPostLogin } from '@/Api'
 import { useCounterStore } from '@/stores/counter.js'
-import { storeToRefs } from 'pinia'
 const store = useCounterStore()
-const { Ping } = storeToRefs(store)
+const { Ping, UserData } = storeToRefs(store)
 const { GetPing } = store
 /* add icons to the library */
 library.add(fab, fas, far)
 const router = useRouter()
-const GetCaptcha = async () => {
-  try {
-    const res = await ApiGetCaptcha()
-    if (res.status === 200) {
-      Captcha.value = res.data.Code
-      CaptchaHashCode.value = res.data.HashCode
-    }
-  } catch (err) {
-    console.log(err)
-  }
-}
+
 const PostLogin = async () => {
   try {
     const body = {
@@ -43,17 +33,19 @@ const PostLogin = async () => {
     const res = await ApiPostLogin(body)
     if (res.status === 200) {
       console.log(res.data)
+      UserData.value = cloneDeep(res.data)
       localStorage.setItem('FixAcountBool', FixAcount.value)
       localStorage.setItem('UserAccount', UserAccount.value)
+      sessionStorage.setItem('token', res.data.Toll)
       router.push('/list')
     }
   } catch (err) {
-    console.log(err.response.data)
+    console.log(err.response)
+    UserData.value = null
     ErrorMsg.value = err.response.data
     if (UserCaptcha.value !== CaptchaRender.value) {
       ErrorMsg.value = '驗證碼輸入錯誤!'
     }
-
     GetCaptcha()
   } finally {
   }
@@ -63,12 +55,24 @@ const UserAccount = ref('')
 const UserPermit = ref('')
 const UserCaptcha = ref('')
 const FixAcount = ref(false)
+const GetCaptcha = async () => {
+  try {
+    const res = await ApiGetCaptcha()
+    if (res.status === 200) {
+      Captcha.value = res.data.Code
+      CaptchaHashCode.value = res.data.HashCode
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
 const Captcha = ref(null)
 const CaptchaRender = computed(() => {
   return Captcha.value
 })
 const CaptchaHashCode = ref(null)
 const init = async () => {
+  UserData.value = null
   const FixAcountBool = localStorage.getItem('FixAcountBool')
   const Account = localStorage.getItem('UserAccount')
   if (FixAcountBool === 'true') {

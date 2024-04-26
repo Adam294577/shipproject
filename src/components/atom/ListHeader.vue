@@ -14,7 +14,17 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 library.add(fab, fas, far)
 
 import { useRouter } from 'vue-router'
+// import { useCounterStore } from '@/stores/counter.js'
+
+import { ApiGetRescueSheetCount } from '@/Api'
+import { storeToRefs } from 'pinia'
+
+// const store = useCounterStore()
+// const { UserData } = storeToRefs(store)
+
 const router = useRouter()
+const InReferralCount = ref(0)
+const ReferralFinishCount = ref(0)
 
 function gotoDetail() {
   console.log('gotoDetail')
@@ -23,7 +33,29 @@ function gotoDetail() {
 
 function logout() {
   router.push('/')
+  setTimeout(() => {
+    location.reload()
+  }, 1000)
 }
+const GetRescueSheetCount = async () => {
+  try {
+    const res = await ApiGetRescueSheetCount()
+    if (res.status === 200) {
+      InReferralCount.value = res.data.InReferralCount
+      ReferralFinishCount.value = res.data.ReferralFinishCount
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
+const init = async () => {
+  // if (UserData.value === null) logout()
+  await GetRescueSheetCount()
+}
+
+setTimeout(() => {
+  // init()
+}, 1000)
 </script>
 <template>
   <div class="container-fluid bg-blue header">
@@ -43,7 +75,7 @@ function logout() {
             </p>
           </div>
           <div class="text-[#FFF]">
-            <div class="font-bold text-[16px] pb-1 pt-3">林美美</div>
+            <!-- <div class="font-bold text-[16px] pb-1 pt-3">{{ UserData.Name }}</div> -->
             <div>
               <p class="mb-0 lh-sm">屏東縣琉球鄉衛生所</p>
               <p class="lh-sm">護理人員</p>
@@ -52,11 +84,11 @@ function logout() {
               class="flex text-center font-bold w-[160px] justify-between px-2 relative left-[-15px] top-[-10px]"
             >
               <div class="flex flex-wrap justify-center">
-                <p class="mb-0 text-[20px]">36</p>
+                <p class="mb-0 text-[20px]">{{ InReferralCount }}</p>
                 <p class="text-[12px] w-full underline underline-offset-8">轉診中</p>
               </div>
               <div class="flex flex-wrap justify-center">
-                <p class="referral-finish-count text-[20px] mb-0">124</p>
+                <p class="referral-finish-count text-[20px] mb-0">{{ ReferralFinishCount }}</p>
                 <p class="text-[12px] w-full">轉診完成</p>
               </div>
             </div>
