@@ -1,12 +1,24 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-
+import { ApiGetPing } from '@/Api'
 export const useCounterStore = defineStore('counter', () => {
+  const Ping = ref(null)
+  const GetPing = async () => {
+    try {
+      const res = await ApiGetPing()
+      if (res.status === 200) {
+        console.log(res.data)
+        // Captcha.value = res.data.Code
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
   const count = ref(0)
   const doubleCount = computed(() => count.value * 2)
   function increment() {
     count.value++
   }
 
-  return { count, doubleCount, increment }
+  return { GetPing, Ping }
 })
