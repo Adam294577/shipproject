@@ -35,7 +35,50 @@ const selectedAttendanceUnit = ref('救護船')
 const selectedPort = ref('鹽埔')
 const selectedCatheter = ref([])
 
-const swiperData = ref(['test1', 'test2', 'test3', 'test4', 5, 6, 7, 8, 9, 10])
+const LifeData = ref([
+  {
+    idx: 0,
+    clock: '12:45',
+    lungs: '23',
+    heart: '68',
+    temper: '36',
+    spo2: '98',
+    circut: '130/77',
+    onbed: '清醒',
+    e: '1',
+    v: '2',
+    m: '3',
+    EditName: '張美麗(NO.35884)'
+  },
+  {
+    idx: 1,
+    clock: null,
+    lungs: null,
+    heart: null,
+    temper: null,
+    spo2: null,
+    circut: null,
+    onbed: null,
+    e: 'C',
+    v: '5',
+    m: '6',
+    EditName: '陳英俊(NO.35866)'
+  },
+  {
+    idx: 1,
+    clock: null,
+    lungs: null,
+    heart: null,
+    temper: null,
+    spo2: null,
+    circut: null,
+    onbed: null,
+    e: 'C',
+    v: '5',
+    m: '6',
+    EditName: '張美麗(NO.35884)'
+  }
+])
 const logVal = (val) => {
   console.log(val)
 }
@@ -376,10 +419,27 @@ const logVal = (val) => {
             :modules="modules"
             class="mySwiper w-4/5 max-w-[700px]"
           >
-            <swiper-slide v-for="list in swiperData" :key="list" @click="logVal(list)">
-              {{ list }}
+            <swiper-slide
+              v-for="list in LifeData"
+              :key="list.idx"
+              class="bg-[#306DA3CC] rounded-[10px]"
+            >
+              <life-swiper-item>
+                <template #clock>{{ list.clock }}</template>
+                <template #lungs>{{ list.lungs }}</template>
+                <template #heart>{{ list.heart }}</template>
+                <template #temper>{{ list.temper }}</template>
+                <template #spo2>{{ list.spo2 }}</template>
+                <template #circut>{{ list.circut }}</template>
+                <template #onbed>{{ list.onbed }}</template>
+                <template #e>{{ list.e }}</template>
+                <template #v>{{ list.v }}</template>
+                <template #m>{{ list.m }}</template>
+                <template #EditName>{{ list.EditName }}</template>
+              </life-swiper-item>
             </swiper-slide>
           </swiper>
+
           <div
             class="w-1/5 flex items-center justify-center -mt-14 cursor-pointer"
             @click="insertLife"
@@ -388,8 +448,7 @@ const logVal = (val) => {
             <span class="font-bold">新增紀錄</span>
           </div>
         </div>
-        <div class="row px-4 btn-list g-1 mb-3 pb-4 max-w-[768px] mx-auto">
-          <a href="#" class="btn btn-primary">送出</a>
+        <div class="row px-4 btn-list g-1 mb-3 pb-8 max-w-[768px] mx-auto">
           <a href="#" class="btn btn-success">儲存變更</a>
         </div>
       </div>
@@ -399,7 +458,6 @@ const logVal = (val) => {
 
 <style scoped>
 .mySwiper {
-  border: 1px solid #f00;
   height: 240px;
 }
 .swiper-slide {
