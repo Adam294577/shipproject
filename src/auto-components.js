@@ -11,6 +11,7 @@ declare module 'vue' {
     BlackMSvg: typeof import('./components/svg/BlackMSvg.vue')['default']
     BlackVSvg: typeof import('./components/svg/BlackVSvg.vue')['default']
     CardInfo: typeof import('./components/atom/CardInfo.vue')['default']
+    CardInfoItem: typeof import('./components/atom/CardInfoItem.vue')['default']
     CircutSvg: typeof import('./components/svg/CircutSvg.vue')['default']
     ClockSvg: typeof import('./components/svg/ClockSvg.vue')['default']
     DropdownSvg: typeof import('./components/svg/DropdownSvg.vue')['default']

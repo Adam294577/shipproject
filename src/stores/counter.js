@@ -2,6 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { ApiGetPing } from '@/Api'
 export const useCounterStore = defineStore('counter', () => {
+  const UserData = ref(null)
   const Ping = ref(null)
   const GetPing = async () => {
     try {
@@ -14,11 +15,6 @@ export const useCounterStore = defineStore('counter', () => {
       console.log(err)
     }
   }
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
 
-  return { GetPing, Ping }
+  return { GetPing, Ping, UserData }
 })
