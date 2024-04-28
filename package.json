@@ -17,6 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/vue-fontawesome": "^3.0.6",
     "@quasar/extras": "^1.16.11",
+    "await-to-js": "^3.0.0",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "dayjs": "^1.11.10",

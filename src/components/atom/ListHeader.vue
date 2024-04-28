@@ -14,13 +14,13 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 library.add(fab, fas, far)
 
 import { useRouter } from 'vue-router'
-// import { useCounterStore } from '@/stores/counter.js'
+import { useCounterStore } from '@/stores/counter.js'
 
 import { ApiGetRescueSheetCount } from '@/Api'
 import { storeToRefs } from 'pinia'
 
-// const store = useCounterStore()
-// const { UserData } = storeToRefs(store)
+const store = useCounterStore()
+const { UserData } = storeToRefs(store)
 
 const router = useRouter()
 const InReferralCount = ref(0)
@@ -49,12 +49,12 @@ const GetRescueSheetCount = async () => {
   }
 }
 const init = async () => {
-  // if (UserData.value === null) logout()
+  if (UserData.value === null) logout()
   await GetRescueSheetCount()
 }
 
 setTimeout(() => {
-  // init()
+  init()
 }, 1000)
 </script>
 <template>
