@@ -127,21 +127,47 @@ const getVal = ref("1")
 const getVal2 = ref("1")
 let mySwiper = null
 let mySwiper2 = null
+let TooSlow = false
 onMounted( async ()=>{
   await nextTick(); // 等待 DOM 更新
   mySwiper = document.querySelector('.mySwiper').swiper
   mySwiper2 = document.querySelector('.mySwiper2').swiper
-
+  mySwiper.on('touchEnd',(e)=>{
+    console.log('防slideChange更新失敗判斷');
+    TooSlow = true
+    setTimeout(()=>{
+      if(TooSlow){
+        console.log('A區滑太慢了，使用這事件更新值',);
+        getVal.value = Arr.value[e.realIndex]
+      }
+    },300)
+  })
+  mySwiper2.on('touchEnd',(e)=>{
+    console.log('防slideChange更新失敗判斷');
+    TooSlow = true
+    setTimeout(()=>{
+      if(TooSlow){
+        console.log('B區滑太慢了，使用這事件更新值',);
+        getVal2.value = Arr2.value[e.realIndex]
+      }
+      if(getVal.value < getVal2.value){
+        setTimeout(()=>{
+          mySwiper2.slideToLoop(0)
+        },700)
+      }
+    },300)
+  })
   mySwiper.on('slideChangeTransitionEnd',(e)=>{
+    TooSlow = false
     getVal.value = Arr.value[e.realIndex]
     console.log('A區得到的值',getVal.value);
     if(getVal.value < getVal2.value){
-      setTimeout(()=>{
-        getVal2.value = "清空重填"
-      },100)
+      getVal2.value = "清空"
     }
   })
+  let backTimes = 0
   mySwiper2.on('slideChangeTransitionEnd',(e)=>{
+    TooSlow = false
     let berforeVal = getVal2.value
     let beforeIdx = Arr2.value.indexOf(berforeVal)
     console.log('滑動前的索引',beforeIdx);
@@ -149,16 +175,15 @@ onMounted( async ()=>{
     getVal2.value = Arr2.value[e.realIndex]
     console.log('B區得到的值',getVal2.value);
     if(getVal.value < getVal2.value){
-      let backTime = 0
-      setTimeout(()=>{
-        console.log('返回原本值-1',berforeVal);
-        if(beforeIdx === -1) beforeIdx = 0
-        mySwiper2.slideToLoop(beforeIdx)
-        backTime++
-        if(backTime > 2){
-          mySwiper2.slideToLoop(0)
-        }
-      },100)
+      
+      console.log('返回原本值-1',berforeVal);
+      if(beforeIdx === -1) beforeIdx = 0
+      mySwiper2.slideToLoop(beforeIdx)
+      backTimes++
+      if(backTimes > 2){
+        mySwiper2.slideToLoop(0)
+        backTimes = 0
+      }
 
     }
   })
