@@ -153,6 +153,7 @@ onMounted( async ()=>{
       if(getVal.value < getVal2.value){
         setTimeout(()=>{
           mySwiper2.slideToLoop(0)
+          getVal2.value = 1
         },700)
       }
     },300)
@@ -182,6 +183,7 @@ onMounted( async ()=>{
       backTimes++
       if(backTimes > 2){
         mySwiper2.slideToLoop(0)
+        getVal2.value = 1
         backTimes = 0
       }
 
