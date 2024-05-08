@@ -121,7 +121,38 @@ let MapTime2 = SliceToTimeFormat(MapTime[0])
 
 console.log('還原成後端',MapTime2);
 const  modules = ref([FreeMode, Pagination])
-const Arr = ref(['1','2','3','4','5'])
+const Arr = ref(['1','2','3','4','5','6','7','8',])
+const Arr2 = ref(['1','2','3','4','5','6','7','8','9'])
+const getVal = ref("1")
+const getVal2 = ref("1")
+let mySwiper = null
+let mySwiper2 = null
+onMounted( async ()=>{
+  await nextTick(); // 等待 DOM 更新
+  mySwiper = document.querySelector('.mySwiper').swiper
+  mySwiper2 = document.querySelector('.mySwiper2').swiper
+  mySwiper.on('slideChangeTransitionEnd',(e)=>{
+    getVal.value = Arr.value[e.realIndex]
+    console.log('A區得到的值',getVal.value);
+  })
+  mySwiper2.on('slideChangeTransitionEnd',(e)=>{
+    let berforeVal = getVal2.value
+    let beforeIdx = Arr2.value.indexOf(berforeVal)
+    console.log('滑動前的索引',beforeIdx);
+    console.log('之前的值:',berforeVal);
+    getVal2.value = Arr2.value[e.realIndex]
+    console.log('B區得到的值',getVal2.value);
+    if(getVal.value < getVal2.value){
+      setTimeout(()=>{
+        console.log('返回原本值-1',berforeVal);
+        mySwiper2.slideToLoop(beforeIdx)
+      },100)
+
+    }
+  })
+
+})
+
 init()
 // 偵測是否有連上網路
 setInterval(() => {
@@ -131,31 +162,51 @@ setInterval(() => {
 
 <!-- login -->
 <template>
-  <div class=" relative z-10 w-full h-[100vh] bg-[#CCC] border-2 border-red-600">
+  <div class="flex flex-nowrap gap-x-2">
+  <div class=" relative z-10 w-1/2 h-[100vh] bg-[#CCC]">
+    <h1 class=" text-center">A區選的值: {{ getVal }}</h1>
     <swiper
     :loop="true"
     :direction="'vertical'"
     :slidesPerView="3"
     :spaceBetween="30"
-    :freeMode="true"
-    :pagination="{
-      clickable: true,
+    :freeMode="{
+      enabled:true,
+      sticky:true
     }"
+ 
     :modules="modules"
     class="mySwiper h-[800px] "
   >
-    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 1</swiper-slide>
-    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 2</swiper-slide>
-    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 3</swiper-slide>
-    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 4</swiper-slide>
-    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 5</swiper-slide>
-    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 6</swiper-slide>
-    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 7</swiper-slide>
-    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 8</swiper-slide>
-    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 9</swiper-slide>
+    <swiper-slide 
+    v-for="list in Arr" :key="list"
+    class="flex items-center justify-center bg-[#EEE]">{{ list }}</swiper-slide>
+
   </swiper>
   </div>
-  <div class="container">
+  <div class=" relative z-10 w-1/2 h-[100vh] bg-[#CCC]">
+    <h1 class=" text-center">B區選的值: {{ getVal2 }}</h1>
+    <swiper
+    :loop="true"
+    :direction="'vertical'"
+    :slidesPerView="3"
+    :spaceBetween="30"
+    :freeMode="{
+      enabled:true,
+      sticky:true
+    }"
+ 
+    :modules="modules"
+    class="mySwiper2 h-[800px] "
+  >
+    <swiper-slide 
+    v-for="list in Arr2" :key="list"
+    class="flex items-center justify-center bg-[#EEE]">{{ list }}</swiper-slide>
+
+  </swiper>
+  </div>
+</div>
+  <div class="container" style="opacity: 0;">
     <div class="row justify-content-center mb-5">
       <div class="col">
         <img src="/src/assets/images/ambulanceLogo.svg" alt="" class="img-fluid d-block mx-auto" />
