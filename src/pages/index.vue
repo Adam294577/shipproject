@@ -131,9 +131,15 @@ onMounted( async ()=>{
   await nextTick(); // 等待 DOM 更新
   mySwiper = document.querySelector('.mySwiper').swiper
   mySwiper2 = document.querySelector('.mySwiper2').swiper
+
   mySwiper.on('slideChangeTransitionEnd',(e)=>{
     getVal.value = Arr.value[e.realIndex]
     console.log('A區得到的值',getVal.value);
+    if(getVal.value < getVal2.value){
+      setTimeout(()=>{
+        getVal2.value = "清空重填"
+      },100)
+    }
   })
   mySwiper2.on('slideChangeTransitionEnd',(e)=>{
     let berforeVal = getVal2.value
@@ -143,9 +149,15 @@ onMounted( async ()=>{
     getVal2.value = Arr2.value[e.realIndex]
     console.log('B區得到的值',getVal2.value);
     if(getVal.value < getVal2.value){
+      let backTime = 0
       setTimeout(()=>{
         console.log('返回原本值-1',berforeVal);
+        if(beforeIdx === -1) beforeIdx = 0
         mySwiper2.slideToLoop(beforeIdx)
+        backTime++
+        if(backTime > 2){
+          mySwiper2.slideToLoop(0)
+        }
       },100)
 
     }
@@ -171,6 +183,9 @@ setInterval(() => {
     :slidesPerView="3"
     :spaceBetween="30"
     :freeMode="{
+      momentumRatio:2,
+      momentumVelocityRatio:1,
+      minimumVelocity:0.01,
       enabled:true,
       sticky:true
     }"
@@ -192,6 +207,9 @@ setInterval(() => {
     :slidesPerView="3"
     :spaceBetween="30"
     :freeMode="{
+      momentumRatio:2,
+      momentumVelocityRatio:1,
+      minimumVelocity:0.01,
       enabled:true,
       sticky:true
     }"
