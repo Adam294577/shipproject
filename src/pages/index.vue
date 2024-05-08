@@ -12,6 +12,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { ApiGetCaptcha, ApiPostLogin } from '@/Api'
 import { useCounterStore } from '@/stores/counter.js'
+
+import dayjs from 'dayjs'
+
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { FreeMode, Pagination } from 'swiper/modules';
 const store = useCounterStore()
 const { Ping, UserData } = storeToRefs(store)
 const { GetPing } = store
@@ -87,15 +92,69 @@ const init = async () => {
   }
   await GetCaptcha()
 }
+const TimeData = ref([
+  '2019-03-06T00:00:00',
+  '2019-03-07T00:00:00',
+  '2019-03-07T04:00:00',
+  '2019-03-07T04:27:00',
+  '2019-03-07T04:30:00',
+])
+
+console.log('後端原始時間:',TimeData.value);
+
+let MapTime =  TimeData.value.map(item=>{
+  item = dayjs(item).format("YYYY年MM月DD日 HH:mm")
+  // item = dayjs(item)
+  return item
+})
+console.log('map之後',MapTime);
+const SliceToTimeFormat = (time) =>{
+  let y  = time.slice(0,4)
+  let M  = time.slice(5,7)
+  let D  = time.slice(8,10)
+  let H  = time.slice(12,14)
+  let m  = time.slice(15,17)
+  let s = "00"
+  return `${y}-${M}-${D}T${H}:${m}:${s}`
+}
+let MapTime2 = SliceToTimeFormat(MapTime[0])
+
+console.log('還原成後端',MapTime2);
+const  modules = ref([FreeMode, Pagination])
+const Arr = ref(['1','2','3','4','5'])
 init()
 // 偵測是否有連上網路
 setInterval(() => {
   // GetPing()
-}, 1000)
+}, 1000);
 </script>
 
 <!-- login -->
 <template>
+  <div class=" relative z-10 w-full h-[100vh] bg-[#CCC] border-2 border-red-600">
+    <swiper
+    :loop="true"
+    :direction="'vertical'"
+    :slidesPerView="3"
+    :spaceBetween="30"
+    :freeMode="true"
+    :pagination="{
+      clickable: true,
+    }"
+    :modules="modules"
+    class="mySwiper h-[800px] "
+  >
+    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 1</swiper-slide>
+    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 2</swiper-slide>
+    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 3</swiper-slide>
+    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 4</swiper-slide>
+    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 5</swiper-slide>
+    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 6</swiper-slide>
+    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 7</swiper-slide>
+    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 8</swiper-slide>
+    <swiper-slide class="flex items-center justify-center border-2 border-red-600">Slide 9</swiper-slide>
+  </swiper>
+  </div>
   <div class="container">
     <div class="row justify-content-center mb-5">
       <div class="col">
